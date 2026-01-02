@@ -63,24 +63,23 @@ const HeroSection = () => {
         {/* First Paragraph - above image (all screens) */}
         <div className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto -mt-8 md:mt-0 mb-2 md:mb-3">
           <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed text-center">
-            21-year-old{" "}
-            <Highlighter action="underline" color="#FFEB3B">
-              <span className="font-bold">Computer Science</span>
+            3rd-year{" "}
+            <Highlighter action="underline" color="#ff0022">
+              <span className="font-bold text-black dark:text-black">  Computer Science  </span>
             </Highlighter>
-            {" "}student building projects through{" "}
-            <Highlighter action="highlight" color="#2563eb">
-              <span className="font-bold">vibe coding</span>
-            </Highlighter>
-            {", "}aiming for{" "}
+            {" "}student with full-stack experience, 12+{" "}
             <Highlighter action="highlight" color="#16a34a">
-              <span className="font-bold">GSoC</span>
+              <span className="font-bold">  hackathons  </span>
             </Highlighter>
-            {" "}while strengthening{" "}
-            <Highlighter action="highlight" color="#000000">
-              <span className="font-bold">core</span>
+            {", "}5K+ LinkedIn{" "}
+            <Highlighter action="highlight" color="#2563eb">
+              <span className="font-bold">  followers  </span>
             </Highlighter>
-            {" "}fundamentals from the kernel up.{" "}
-           
+            {" "}currently learning AI using{" "}
+            <Highlighter action="highlight" color="#2563eb">
+              <span className="font-bold"> Python  </span>
+            </Highlighter>
+            .
           </p>
         </div>
 
@@ -89,26 +88,42 @@ const HeroSection = () => {
           {/* Second Paragraph - Left */}
           <div className="flex-1 max-w-md">
             <p className="text-base lg:text-lg text-foreground leading-relaxed text-left">
-              Learning{" "}
+              obsessed with understanding how{" "}
               <Highlighter action="highlight" color="#2563eb">
-                <span className="font-bold">Python</span>
+                <span className="font-bold">  things work  </span>
               </Highlighter>
-              {" "}at scale, exploring how software and the internet really work,
+              {" "}under the hood, from{" "}
+              <Highlighter action="highlight" color="#16a34a">
+                <span className="font-bold">  system internals  </span>
+              </Highlighter>
+              {" "}to{" "}
+              <Highlighter action="highlight" color="#dc2626">
+                <span className="font-bold">  intelligent software  </span>
+              </Highlighter>
+              .
             </p>
           </div>
 
           {/* Third Paragraph - Right */}
           <div className="flex-1 max-w-md">
             <p className="text-base lg:text-lg text-foreground leading-relaxed text-right">
-              and grinding{" "}
-              <Highlighter action="highlight" color="#dc2626">
-                <span className="font-bold">DSA</span>
-              </Highlighter>
-              {" "}in{" "}
-              <Highlighter action="highlight" color="#000000">
-                <span className="font-bold">Java</span>
-              </Highlighter>
-              {" "}— that post-solution rush is my superhero moment.
+              <span className="whitespace-nowrap">
+                Learning in public through{" "}
+                <Highlighter action="highlight" color="#16a34a">
+                  <span className="font-bold">  open-source contributions  </span>
+                </Highlighter>
+              </span>
+              {", "}
+              <span className="whitespace-nowrap">
+                <Highlighter action="highlight" color="#2563eb">
+                  <span className="font-bold">  docs-first development  </span>
+                </Highlighter>
+                {", "}and{" "}
+                <Highlighter action="highlight" color="#dc2626">
+                  <span className="font-bold">  hands-on system building  </span>
+                </Highlighter>
+              </span>
+              .
             </p>
           </div>
         </div>
@@ -128,18 +143,18 @@ const HeroSection = () => {
         <p className="text-sm md:text-base text-foreground leading-relaxed text-center">
           Learning{" "}
           <Highlighter action="highlight" color="#2563eb">
-            <span className="font-bold">Python</span>
+            <span className="font-bold">  Python  </span>
           </Highlighter>
           {" "}at scale, exploring how software and the internet really work,
         </p>
         <p className="text-sm md:text-base text-foreground leading-relaxed text-center mt-3 md:mt-4">
           and grinding{" "}
           <Highlighter action="highlight" color="#dc2626">
-            <span className="font-bold">DSA</span>
+            <span className="font-bold">  DSA  </span>
           </Highlighter>
           {" "}in{" "}
           <Highlighter action="highlight" color="#000000">
-            <span className="font-bold">Java</span>
+            <span className="font-bold">  Java  </span>
           </Highlighter>
           {" "}— that post-solution rush is my superhero moment.
         </p>
