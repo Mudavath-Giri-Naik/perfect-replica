@@ -49,7 +49,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-20 px-4">
       {/* Background Text - behind image */}
-      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center pointer-events-none select-none px-2 mt-4 md:mt-8 lg:mt-12">
+      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center pointer-events-none select-none px-2 -mt-32 md:mt-8 lg:mt-12">
         <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-primary text-center dark:font-extrabold dark:tracking-[-0.02em]">
           Student
         </h1>
@@ -76,7 +76,7 @@ const HeroSection = () => {
               <span className="font-bold">  followers  </span>
             </Highlighter>
             {" "}currently learning AI using{" "}
-            <Highlighter action="highlight" color="#2563eb">
+            <Highlighter action="underline" color="#eab308">
               <span className="font-bold"> Python  </span>
             </Highlighter>
             .
@@ -93,8 +93,8 @@ const HeroSection = () => {
                 <span className="font-bold">  things work  </span>
               </Highlighter>
               {" "}under the hood, from{" "}
-              <Highlighter action="highlight" color="#16a34a">
-                <span className="font-bold">  system internals  </span>
+              <Highlighter action="underline" color="#16a34a">
+                <span className="font-bold text-black dark:text-black">  system internals  </span>
               </Highlighter>
               {" "}to{" "}
               <Highlighter action="highlight" color="#dc2626">
@@ -119,8 +119,8 @@ const HeroSection = () => {
                   <span className="font-bold">  docs-first development  </span>
                 </Highlighter>
                 {", "}and{" "}
-                <Highlighter action="highlight" color="#dc2626">
-                  <span className="font-bold">  hands-on system building  </span>
+                <Highlighter action="underline" color="#dc2626">
+                  <span className="font-bold text-black dark:text-black">  hands-on system building  </span>
                 </Highlighter>
               </span>
               .
@@ -130,7 +130,7 @@ const HeroSection = () => {
       </div>
 
       {/* Developer Image - on top of background text */}
-      <div className="relative z-20 flex items-center justify-center w-full mt-0 md:-mt-4 lg:-mt-8">
+      <div className="relative z-20 flex items-center justify-center w-full mt-0 md:-mt-4 lg:-mt-16">
         <img
           src={developerImage}
           alt="Student Developer working on laptop"
@@ -139,25 +139,51 @@ const HeroSection = () => {
       </div>
 
       {/* Mobile view - show paragraphs below image */}
-      <div className="lg:hidden flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 mt-6">
+      <div className="lg:hidden flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 mt-4 md:mt-6 space-y-3 md:space-y-4">
         <p className="text-sm md:text-base text-foreground leading-relaxed text-center">
-          Learning{" "}
+          obsessed with understanding how{" "}
           <Highlighter action="highlight" color="#2563eb">
-            <span className="font-bold">  Python  </span>
+            <span className="font-bold">  things work  </span>
           </Highlighter>
-          {" "}at scale, exploring how software and the internet really work,
-        </p>
-        <p className="text-sm md:text-base text-foreground leading-relaxed text-center mt-3 md:mt-4">
-          and grinding{" "}
+          {" "}under the hood, from{" "}
+          <Highlighter action="underline" color="#16a34a">
+            <span className="font-bold text-black dark:text-black">  system internals  </span>
+          </Highlighter>
+          {" "}to{" "}
           <Highlighter action="highlight" color="#dc2626">
-            <span className="font-bold">  DSA  </span>
+            <span className="font-bold">  intelligent software  </span>
           </Highlighter>
-          {" "}in{" "}
-          <Highlighter action="highlight" color="#000000">
-            <span className="font-bold">  Java  </span>
-          </Highlighter>
-          {" "}— that post-solution rush is my superhero moment.
+          .
         </p>
+        <div className="text-sm md:text-base text-foreground leading-relaxed text-center flex flex-col">
+          <span>
+            Learning in public through{" "}
+            <Highlighter action="highlight" color="#16a34a">
+              <span className="font-bold">  open-source  </span>
+            </Highlighter>
+          </span>
+          <span>
+            <Highlighter action="highlight" color="#16a34a">
+              <span className="font-bold">  contributions  </span>
+            </Highlighter>
+            {", "}
+          </span>
+          <span>
+            <Highlighter action="highlight" color="#2563eb">
+              <span className="font-bold">  docs-first development  </span>
+            </Highlighter>
+            {", "}and{" "}
+            <Highlighter action="underline" color="#dc2626">
+              <span className="font-bold text-black dark:text-black">  hands-on  </span>
+            </Highlighter>
+          </span>
+          <span>
+            <Highlighter action="underline" color="#dc2626">
+              <span className="font-bold text-black dark:text-black">  system building  </span>
+            </Highlighter>
+            .
+          </span>
+        </div>
       </div>
 
       {/* Social Icons - Mobile (original layout) */}
