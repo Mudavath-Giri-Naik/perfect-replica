@@ -47,7 +47,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-20 px-4">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 md:pt-28 lg:pt-32 px-4">
       {/* Background Text - behind image */}
       <div className="absolute inset-0 z-0 flex flex-col items-center justify-center pointer-events-none select-none px-2 -mt-32 md:mt-8 lg:mt-12">
         <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-primary text-center dark:font-extrabold dark:tracking-[-0.02em]">
@@ -130,7 +130,7 @@ const HeroSection = () => {
       </div>
 
       {/* Developer Image - on top of background text */}
-      <div className="relative z-20 flex items-center justify-center w-full mt-0 md:-mt-4 lg:-mt-16">
+      <div className="relative z-20 flex items-center justify-center w-full mt-4 md:-mt-12 lg:-mt-24">
         <img
           src={developerImage}
           alt="Student Developer working on laptop"
@@ -187,7 +187,7 @@ const HeroSection = () => {
       </div>
 
       {/* Social Icons - Mobile (original layout) */}
-      <div className="relative z-30 flex items-center justify-center flex-wrap gap-3 md:gap-4 mt-2 md:mt-3 px-4 md:hidden">
+      <div className="relative z-30 flex items-center justify-center flex-wrap gap-3 md:gap-4 mt-8 px-4 md:hidden">
         <SocialIcon type="github" url="https://github.com/Mudavath-Giri-Naik" />
         <SocialIcon type="linkedin" url="https://www.linkedin.com/in/giri-naik/" />
         <SocialIcon type="instagram" url="https://www.instagram.com/giri_nayakh/" />
