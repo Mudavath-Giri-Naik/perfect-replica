@@ -71,6 +71,7 @@ export default {
           medium: "hsl(var(--social-medium))",
           whatsapp: "hsl(var(--social-whatsapp))",
           phone: "hsl(var(--social-phone))",
+          email: "hsl(var(--social-email))",
         },
       },
       borderRadius: {

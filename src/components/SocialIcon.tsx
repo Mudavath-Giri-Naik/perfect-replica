@@ -2,9 +2,10 @@ import { Instagram, Linkedin, Github, Phone } from "lucide-react";
 
 interface SocialIconProps {
   type: "instagram" | "linkedin" | "github" | "medium" | "whatsapp" | "phone";
+  url: string;
 }
 
-const SocialIcon = ({ type }: SocialIconProps) => {
+const SocialIcon = ({ type, url }: SocialIconProps) => {
   const iconClasses = "w-5 h-5";
   
   const getIcon = () => {
@@ -53,10 +54,18 @@ const SocialIcon = ({ type }: SocialIconProps) => {
     }
   };
 
+  // Determine if link should open in new tab (external links)
+  const isExternalLink = url.startsWith("http");
+  const linkProps = isExternalLink 
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
     <a
-      href="#"
+      href={url}
+      {...linkProps}
       className={`w-10 h-10 md:w-12 md:h-12 rounded-full border border-border bg-background flex items-center justify-center transition-all duration-300 ${getColorClass()} hover:text-background hover:scale-110`}
+      aria-label={type}
     >
       {getIcon()}
     </a>
