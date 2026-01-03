@@ -1,0 +1,5 @@
+# Add your images here
+# Supported formats: JPG, PNG, WebP
+# The slider will automatically display images named: image1.jpg, image2.jpg, image3.jpg, etc.
+# Or update the ImageSliderSection.tsx component to use your custom image names
+

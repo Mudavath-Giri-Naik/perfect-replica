@@ -1,6 +1,7 @@
 import developerImage from "@/assets/developer-person.png";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Highlighter } from "@/components/ui/highlighter";
+import { BackgroundLines } from "@/components/ui/background-lines";
 import SocialIcon from "./SocialIcon";
 import { ChevronDown, Github, Linkedin, Instagram, Phone } from "lucide-react";
 
@@ -49,14 +50,16 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 md:pt-28 lg:pt-32 px-4">
       {/* Background Text - behind image */}
-      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center pointer-events-none select-none px-2 -mt-32 md:mt-8 lg:mt-12">
-        <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-primary text-center dark:font-extrabold dark:tracking-[-0.02em]">
-          Student
-        </h1>
-        <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-secondary -mt-4 sm:-mt-6 md:-mt-10 lg:-mt-14 text-center dark:font-extrabold dark:tracking-[-0.02em]">
-          Developer
-        </h1>
-      </div>
+      <BackgroundLines className="absolute inset-0 z-0 pointer-events-none select-none -mt-32 md:mt-8 lg:mt-12">
+        <div className="flex flex-col items-center justify-center px-2 h-full">
+          <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-primary text-center dark:font-extrabold dark:tracking-[-0.02em]">
+            Student
+          </h1>
+          <h1 className="text-[4rem] sm:text-[6rem] md:text-[10rem] lg:text-[14rem] font-black leading-none tracking-tight text-hero-secondary -mt-4 sm:-mt-6 md:-mt-10 lg:-mt-14 text-center dark:font-extrabold dark:tracking-[-0.02em]">
+            Developer
+          </h1>
+        </div>
+      </BackgroundLines>
 
       {/* Text Content Section - Top */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4">
