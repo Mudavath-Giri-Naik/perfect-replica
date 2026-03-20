@@ -13,6 +13,7 @@ import {
     IconWorld,
 } from "@tabler/icons-react";
 import intentifyVideo from "@/assets/Intentify.mp4";
+import doxyVideo from "@/assets/doxy.mp4";
 import { Badge } from "@/components/ui/badge";
 
 export function BentoGridDemo() {
@@ -32,10 +33,10 @@ export function BentoGridDemo() {
         </BentoGrid>
     );
 }
-const VideoHeader = () => (
+const VideoHeader = ({ src }: { src: string }) => (
     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
         <video
-            src={intentifyVideo}
+            src={src}
             autoPlay
             muted
             loop
@@ -57,7 +58,7 @@ const items = [
             </div>
         ),
         description: "This tool turns simple prompts into ready-to-use coding assessments for recruiters.",
-        header: <VideoHeader />,
+        header: <VideoHeader src={intentifyVideo} />,
         href: "https://intentify-v2.vercel.app/",
         icon: (
             <div className="flex items-center justify-between w-full" onClick={(e) => e.stopPropagation()}>
@@ -90,34 +91,14 @@ const items = [
         ),
     },
     {
-        title: "The Digital Revolution",
-        description: "Dive into the transformative power of technology.",
-        header: <Skeleton />,
-        icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-    },
-    {
-        title: "The Art of Design",
-        description: "Discover the beauty of thoughtful and functional design.",
-        header: <Skeleton />,
-        icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-    },
-    {
-        title: "The Power of Communication",
-        description:
-            "Understand the impact of effective communication in our lives.",
-        header: <Skeleton />,
-        icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
-    },
-    {
-        title: "The Pursuit of Knowledge",
-        description: "Join the quest for understanding and enlightenment.",
-        header: <Skeleton />,
-        icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
-    },
-    {
-        title: "The Joy of Creation",
-        description: "Experience the thrill of bringing ideas to life.",
-        header: <Skeleton />,
-        icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
+        title: (
+            <div className="flex items-center gap-2">
+                <span>Doxy</span>
+                <Badge variant="secondary" className="text-[10px] font-medium py-0 px-1 border-neutral-200 dark:border-neutral-800 text-blue-600 dark:text-blue-400">For Applicants</Badge>
+            </div>
+        ),
+        description: "An AI document editor - Prepare your resumes in seconds by just pasting JD and download.",
+        header: <VideoHeader src={doxyVideo} />,
+        icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     },
 ];
