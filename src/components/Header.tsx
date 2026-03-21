@@ -1,4 +1,4 @@
-import { Menu, X, Mail, ArrowUpRight } from "lucide-react";
+import { Menu, X, Mail, ArrowUpRight, FolderKanban, GitFork, BookOpenText, Award } from "lucide-react";
 import { useState, useEffect } from "react";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { CoolMode } from "@/components/ui/cool-mode";
@@ -9,10 +9,10 @@ const Header = () => {
   const [activeTab, setActiveTab] = useState("");
 
   const navItems = [
-    { name: "Projects", href: "#projects" },
-    { name: "Open Source", href: "#open-source" },
-    { name: "Blogs", href: "#blogs" },
-    { name: "Certifications", href: "#certifications" },
+    { name: "Projects", href: "#projects", icon: <FolderKanban className="w-4 h-4" /> },
+    { name: "Open Source", href: "#open-source", icon: <GitFork className="w-4 h-4" /> },
+    { name: "Blogs", href: "#blogs", icon: <BookOpenText className="w-4 h-4" /> },
+    { name: "Certifications", href: "#certifications", icon: <Award className="w-4 h-4" /> },
   ];
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between py-4 px-4 md:px-6">
+    <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between py-4 px-4 md:px-6 md:pointer-events-none">
       {/* Name - Left Corner with Signature Style */}
       <div className="flex items-center gap-2">
         <span className="text-3xl md:text-4xl signature-name">
@@ -71,21 +71,23 @@ const Header = () => {
         </span>
       </div>
 
-      {/* Navigation Links - Center (Desktop) */}
-      <nav className="hidden md:flex items-center gap-1 bg-background rounded-full px-2 py-1.5 shadow-lg border border-border">
+      {/* Navigation Links - Right Vertical (Desktop/Tablet) */}
+      <nav className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-auto flex-col items-stretch gap-1 bg-background rounded-2xl px-2 py-2 shadow-lg border border-border">
         {navItems.map((item) => (
           <CoolMode key={item.name}>
             <a
               href={item.href}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "px-4 py-1 rounded-full transition-all text-sm font-medium",
+                "px-3 py-2 rounded-full transition-all text-sm font-medium text-center flex items-center justify-center",
                 activeTab === item.name
                   ? "bg-black text-white dark:bg-white dark:text-black shadow-md"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               )}
+              title={item.name}
+              aria-label={item.name}
             >
-              {item.name}
+              {item.icon}
             </a>
           </CoolMode>
         ))}
@@ -94,7 +96,7 @@ const Header = () => {
       {/* Right Section - Email Button */}
       <div className="flex items-center gap-2">
         {/* Email Button */}
-        <div className="hidden md:block">
+        <div className="hidden md:block pointer-events-auto">
           <RainbowButton
             onClick={() => (window.location.href = "mailto:yourgirinaik@gmail.com")}
             className="flex items-center gap-2 h-10 px-4 py-2 rounded-full text-sm font-medium"

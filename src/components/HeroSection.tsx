@@ -3,47 +3,65 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { Highlighter } from "@/components/ui/highlighter";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import SocialIcon from "./SocialIcon";
-import { ChevronDown, Github, Linkedin, Instagram, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const socialIcons = [
     {
+      type: "github",
       title: "GitHub",
-      icon: <Github className="w-5 h-5" />,
+      iconPath: "/github.png",
       href: "https://github.com/Mudavath-Giri-Naik",
     },
     {
+      type: "linkedin",
       title: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
+      iconPath: "/linkedin.png",
       href: "https://www.linkedin.com/in/giri-naik/",
     },
     {
-      title: "Instagram",
-      icon: <Instagram className="w-5 h-5" />,
-      href: "https://www.instagram.com/giri_nayakh/",
+      type: "email",
+      title: "Email",
+      iconPath: "/gmail.png",
+      href: "mailto:yourgirinaik@gmail.com",
     },
     {
-      title: "Medium",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-        </svg>
-      ),
-      href: "https://medium.com/@mr_girish",
+      type: "kaggle",
+      title: "Kaggle",
+      iconPath: "/kaggle.png",
+      href: "https://www.kaggle.com/girish1133",
     },
     {
-      title: "WhatsApp",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-      ),
-      href: "https://wa.me/9652560237",
+      type: "huggingface",
+      title: "Hugging Face",
+      iconPath: "/hug.png",
+      href: "https://huggingface.co/GiriNaik",
     },
     {
-      title: "Phone",
-      icon: <Phone className="w-5 h-5" />,
-      href: "tel:9652560237",
+      type: "leetcode",
+      title: "LeetCode",
+      iconPath: "/leetcode.png",
+      href: "https://leetcode.com/u/nayakhh/",
+    },
+    {
+      type: "vercel",
+      title: "Vercel",
+      iconPath: "/vercel.png",
+      href: "https://vercel.com/giri-naiks-projects-9e92c779",
+    },
+
+
+    {
+      type: "twitter",
+      title: "Twitter",
+      iconPath: "/twitter.png",
+      href: "https://x.com/giri_nayakh",
+    },
+    {
+      type: "researchgate",
+      title: "ResearchGate",
+      iconPath: "/researchgate.png",
+      href: "https://www.researchgate.net/profile/Giri-Naik-2?ev=hdr_xprf",
     },
   ];
 
@@ -193,18 +211,32 @@ const HeroSection = () => {
       <div className="relative z-30 flex items-center justify-center flex-wrap gap-3 md:gap-4 mt-8 px-4 md:hidden">
         <SocialIcon type="github" url="https://github.com/Mudavath-Giri-Naik" />
         <SocialIcon type="linkedin" url="https://www.linkedin.com/in/giri-naik/" />
-        <SocialIcon type="instagram" url="https://www.instagram.com/giri_nayakh/" />
-        <SocialIcon type="medium" url="https://medium.com/@mr_girish" />
-        <SocialIcon type="whatsapp" url="https://wa.me/9652560237" />
-        <SocialIcon type="phone" url="tel:9652560237" />
+        <SocialIcon type="email" url="https://example.com/email" />
+        <SocialIcon type="kaggle" url="https://example.com/kaggle" />
+        <SocialIcon type="huggingface" url="https://example.com/huggingface" />
+        <SocialIcon type="leetcode" url="https://example.com/leetcode" />
+        <SocialIcon type="vercel" url="https://example.com/vercel" />
+        <SocialIcon type="render" url="https://example.com/render" />
+        <SocialIcon type="twitter" url="https://example.com/twitter" />
+        <SocialIcon type="researchgate" url="https://example.com/researchgate" />
       </div>
 
       {/* Social Icons - Desktop (Magic UI Dock) */}
       <div className="hidden md:block">
-        <Dock direction="right" iconSize={40} iconMagnification={60} iconDistance={140}>
+        <Dock
+          direction="top"
+          className="top-4 z-[60] [&>div]:px-3 [&>div]:pb-2 [&>div]:pt-2 [&>div]:gap-3"
+          iconSize={30}
+          iconMagnification={42}
+          iconDistance={140}
+        >
           {socialIcons.map((item, idx) => (
             <DockIcon key={idx} href={item.href}>
-              {item.icon}
+              {item.iconPath ? (
+                <img src={item.iconPath} alt={`${item.title} icon`} className="w-4 h-4 object-contain scale-[1.35]" />
+              ) : (
+                <span className="text-[10px] font-bold leading-none">R</span>
+              )}
             </DockIcon>
           ))}
         </Dock>

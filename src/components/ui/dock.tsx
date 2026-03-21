@@ -66,9 +66,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             direction === "right" 
               ? "flex flex-col items-center gap-3 rounded-2xl px-3 py-4"
               : "flex items-end gap-4 rounded-2xl px-4 pb-3 pt-3",
-            "bg-background/80 backdrop-blur-lg",
-            "border border-border",
-            "shadow-lg"
+            "bg-white/10 dark:bg-white/5 backdrop-blur-xl supports-[backdrop-filter]:backdrop-blur-xl",
+            "border border-white/25 dark:border-white/15",
+            "shadow-[0_8px_30px_rgba(0,0,0,0.12)]",
+            "ring-1 ring-white/10"
           )}
         >
           {React.Children.map(children, (child) => {
@@ -176,9 +177,10 @@ const DockIcon = React.forwardRef<HTMLAnchorElement, DockIconProps>(
           }
           className={cn(
             "relative flex items-center justify-center rounded-full",
-            "bg-background/80 backdrop-blur-lg",
-            "border border-border",
-            "transition-colors duration-300 hover:bg-background"
+            "bg-white/15 dark:bg-white/10 backdrop-blur-xl supports-[backdrop-filter]:backdrop-blur-xl",
+            "border border-white/30 dark:border-white/20",
+            "shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]",
+            "transition-colors duration-300 hover:bg-white/25 dark:hover:bg-white/15"
           )}
         >
           <div
