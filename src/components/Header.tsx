@@ -1,5 +1,5 @@
 import { Menu, X, Mail, ArrowUpRight, FolderKanban, GitFork, BookOpenText, Award } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { CoolMode } from "@/components/ui/cool-mode";
 import { cn } from "@/lib/utils";
@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   const navItems = [
     { name: "Projects", href: "#projects", icon: <FolderKanban className="w-4 h-4" /> },
@@ -47,9 +49,21 @@ const Header = () => {
       if (element) observer.observe(element);
     });
 
-    // Handle initial scroll position or scroll back to top
+    // Handle initial scroll position, scroll direction, or scroll back to top
     const handleScroll = () => {
-      if (window.scrollY < 100) {
+      const currentScrollY = window.scrollY;
+
+      // Determine visibility based on scroll direction
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setIsVisible(false); // Scrolling down -> hide
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true); // Scrolling up -> show
+      }
+
+      lastScrollY.current = currentScrollY;
+
+      // Handle active tab clear at very top
+      if (currentScrollY < 100) {
         setActiveTab("");
       }
     };
@@ -62,7 +76,13 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between py-4 px-4 md:px-6 md:pointer-events-none">
+    <>
+      <header 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-40 flex items-center justify-between py-4 px-4 md:px-6 md:pointer-events-none transition-transform duration-300 ease-in-out",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       {/* Name - Left Corner with Signature Style */}
       <div className="flex items-center gap-2">
         <span className="text-3xl md:text-4xl signature-name">
@@ -71,27 +91,7 @@ const Header = () => {
         </span>
       </div>
 
-      {/* Navigation Links - Right Vertical (Desktop/Tablet) */}
-      <nav className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-auto flex-col items-stretch gap-1 bg-background rounded-2xl px-2 py-2 shadow-lg border border-border">
-        {navItems.map((item) => (
-          <CoolMode key={item.name}>
-            <a
-              href={item.href}
-              onClick={() => setActiveTab(item.name)}
-              className={cn(
-                "px-3 py-2 rounded-full transition-all text-sm font-medium text-center flex items-center justify-center",
-                activeTab === item.name
-                  ? "bg-black text-white dark:bg-white dark:text-black shadow-md"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              )}
-              title={item.name}
-              aria-label={item.name}
-            >
-              {item.icon}
-            </a>
-          </CoolMode>
-        ))}
-      </nav>
+      {/* Navigation Links - (Moved outside header to preserve fixed positioning) */}
 
       {/* Right Section - Email Button */}
       <div className="flex items-center gap-2">
@@ -156,6 +156,29 @@ const Header = () => {
         </nav>
       )}
     </header>
+
+      {/* Navigation Links - Right Vertical (Desktop/Tablet) */}
+      <nav className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-auto flex-col items-stretch gap-1 bg-background rounded-2xl px-2 py-2 shadow-lg border border-border">
+        {navItems.map((item) => (
+          <CoolMode key={item.name}>
+            <a
+              href={item.href}
+              onClick={() => setActiveTab(item.name)}
+              className={cn(
+                "px-3 py-2 rounded-full transition-all text-sm font-medium text-center flex items-center justify-center",
+                activeTab === item.name
+                  ? "bg-black text-white dark:bg-white dark:text-black shadow-md"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              )}
+              title={item.name}
+              aria-label={item.name}
+            >
+              {item.icon}
+            </a>
+          </CoolMode>
+        ))}
+      </nav>
+    </>
   );
 };
 
