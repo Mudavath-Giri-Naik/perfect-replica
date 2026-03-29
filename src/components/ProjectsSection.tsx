@@ -93,9 +93,91 @@ const categories = [
   "All",
   "Full Stack",
   "Generative AI",
+  "AI agents",
+  "AI automation",
   "MLOps",
+  "Reinforcement learning (RL)",
   "Open Source",
-  "Tools",
+  "Skills",
+];
+
+/* Generative AI detailed skills mapping */
+const genAISkills = [
+  {
+    title: "Programming languages",
+    skills: ["Python", "Java", "C++", "SQL"],
+    pillStyle: { bg: "#eff6ff", text: "#1d4ed8", border: "1px solid #bfdbfe" }, // Blue
+  },
+  {
+    title: "ML frameworks & tools",
+    skills: [
+      "TensorFlow",
+      "PyTorch",
+      "Keras",
+      "LangChain",
+      "HuggingFace",
+      "Scikit-learn",
+      "XGBoost / LightGBM",
+      "FastAPI (model serving)",
+      "Pandas & NumPy",
+    ],
+    pillStyle: { bg: "#f0fdf4", text: "#15803d", border: "1px solid #bbf7d0" }, // Green
+  },
+  {
+    title: "LLMs & GenAI",
+    skills: [
+      "GPT / OpenAI",
+      "Llama",
+      "RAG (Retrieval-Augmented Generation)",
+      "Vector databases",
+      "Fine-tuning",
+      "AI Agents (LangGraph / CrewAI)",
+      "Prompt engineering",
+      "Ollama (local LLMs)",
+    ],
+    pillStyle: { bg: "#faf5ff", text: "#7e22ce", border: "1px solid #e9d5ff" }, // Purple
+  },
+  {
+    title: "MLOps & infrastructure",
+    skills: [
+      "Docker",
+      "Kubernetes",
+      "MLflow",
+      "AWS SageMaker",
+      "Azure ML",
+      "Vertex AI",
+      "CI/CD pipelines",
+      "GitHub Actions",
+      "Evidently AI (drift monitoring)",
+      "Model evaluation & monitoring",
+    ],
+    pillStyle: { bg: "#fffbeb", text: "#b45309", border: "1px solid #fde68a" }, // Orange/Gold
+  },
+  {
+    title: "Foundational knowledge",
+    skills: [
+      "Linear algebra",
+      "Statistics",
+      "Calculus",
+      "NLP",
+      "Computer vision",
+      "Reinforcement learning",
+      "Probability theory",
+      "Data structures & algorithms",
+    ],
+    pillStyle: { bg: "#fef2f2", text: "#b91c1c", border: "1px solid #fecaca" }, // Red
+  },
+  {
+    title: "System design & deployment (new category — tested in senior interviews)",
+    skills: [
+      "REST API design",
+      "Microservices basics",
+      "HuggingFace Spaces / Render / Railway",
+      "Async programming (Celery / Redis)",
+      "Git & version control",
+    ],
+    pillStyle: { bg: "#f0f9ff", text: "#0369a1", border: "1px solid #bae6fd" }, // Light Blue
+  },
 ];
 
 /* tech pill color palette */
@@ -181,68 +263,129 @@ const ProjectsSection: React.FC = () => {
           A collection of things I've built — from full-stack apps to AI-powered tools.
         </p>
 
-        {/* ── Filter Tabs ── */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: 10,
-            marginTop: 30,
-          }}
-        >
-          {categories.map((cat) => {
-            const isActive = cat === activeCategory;
-            const count =
-              cat === "All"
-                ? projects.length
-                : projects.filter((p) => p.category === cat).length;
+        {/* ── Responsive Filter Tabs ── */}
+        <>
+          {/* Mobile Swipeable Filter Row */}
+          <div className="md:hidden w-full overflow-x-auto mt-7 pb-4 mb-4 hide-scrollbar">
+            <div className="flex gap-2.5 w-max px-4">
+              {categories.map((cat) => {
+                const isActive = cat === activeCategory;
+                const count =
+                  cat === "All"
+                    ? projects.length
+                    : cat === "Skills"
+                    ? genAISkills.reduce((acc, group) => acc + group.skills.length, 0)
+                    : projects.filter((p) => p.category === cat).length;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`flex-shrink-0 px-4 py-2.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
+                      isActive
+                        ? "bg-[#111] text-white border border-[#111] shadow-md"
+                        : "bg-white text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50"
+                    }`}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {cat} <span className="opacity-70 text-[11.5px] ml-1">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
+          {/* Desktop Filter Tabs */}
+          <div className="hidden md:flex flex-col items-center gap-3 my-8 mb-12">
+            {[categories.slice(0, 5), categories.slice(5)].map((row, rowIndex) => (
+              <div key={rowIndex} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+              {row.map((cat) => {
+                const isActive = cat === activeCategory;
+                const count =
+                  cat === "All"
+                    ? projects.length
+                    : cat === "Skills"
+                    ? genAISkills.reduce((acc, group) => acc + group.skills.length, 0)
+                    : projects.filter((p) => p.category === cat).length;
+
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    style={{
+                      padding: "7px 18px",
+                      borderRadius: 999,
+                      border: isActive ? "1px solid #111" : "1px solid #ccc",
+                      background: isActive ? "#111" : "transparent",
+                      color: isActive ? "#fff" : "#555",
+                      fontSize: 13,
+                      fontWeight: 500,
+                      cursor: "pointer",
+                      transition: "all .2s ease",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {cat} <span style={{ opacity: 0.7, fontSize: 12, marginLeft: 3 }}>({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+          </div>
+        </>
+
+        {/* ── Dedicated Skills Dashboard ── */}
+        {activeCategory === "Skills" && (
+          <div
+            className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 mb-8 md:mb-10 border border-slate-200 shadow-sm text-left"
+          >
+            {genAISkills.map((group, groupIdx) => (
+              <div key={group.title} className={groupIdx === genAISkills.length - 1 ? "mb-0" : "mb-4 md:mb-6"}>
+                <h4 className="text-slate-800 text-[11px] md:text-xs font-bold mb-2.5 md:mb-3 uppercase tracking-wide">
+                  {group.title}
+                </h4>
+                <div className="flex flex-wrap gap-1.5 md:gap-2.5">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2 md:px-3 py-1 rounded-full text-[10px] md:text-[11px] font-medium font-inter"
+                      style={{
+                        background: group.pillStyle.bg,
+                        color: group.pillStyle.text,
+                        border: group.pillStyle.border,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* ── Cards Grid (Hide when viewing Skills tab) ── */}
+        {activeCategory !== "Skills" && (
+          <div
+            style={{
+              display: "grid",
+              gap: 16,
+              marginTop: 36,
+            }}
+            className="projects-grid"
+          >
+            {filtered.map((project) => (
+              <div
+                key={project.name}
                 style={{
-                  padding: "7px 18px",
-                  borderRadius: 999,
-                  border: isActive ? "1px solid #111" : "1px solid #ccc",
-                  background: isActive ? "#111" : "transparent",
-                  color: isActive ? "#fff" : "#555",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  cursor: "pointer",
-                  transition: "all .2s ease",
-                  fontFamily: "'Inter', sans-serif",
+                  background: "#ffffff",
+                  border: "1px solid #e5e5e5",
+                  borderRadius: 14,
+                  overflow: "hidden",
+                  transition: "opacity .35s ease, transform .35s ease",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
-                {cat} <span style={{ opacity: 0.7, fontSize: 12, marginLeft: 3 }}>({count})</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* ── Cards Grid ── */}
-        <div
-          style={{
-            display: "grid",
-            gap: 16,
-            marginTop: 36,
-          }}
-          className="projects-grid"
-        >
-          {filtered.map((project) => (
-            <div
-              key={project.name}
-              style={{
-                background: "#ffffff",
-                border: "1px solid #e5e5e5",
-                borderRadius: 14,
-                overflow: "hidden",
-                transition: "opacity .35s ease, transform .35s ease",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
               {/* Preview Area — video or image */}
               <div
                 className="group relative"
@@ -484,6 +627,7 @@ const ProjectsSection: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {/* scoped styles for responsive grid + outer card + pulse animation */}
@@ -520,6 +664,13 @@ const ProjectsSection: React.FC = () => {
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; }
           50% { opacity: .4; }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
         }
         .highlight-pill {
           background: rgba(99, 102, 241, 0.12);
