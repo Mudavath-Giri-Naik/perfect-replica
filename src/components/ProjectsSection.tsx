@@ -18,7 +18,7 @@ const projects = [
     github: "https://github.com/Mudavath-Giri-Naik/Intentify-v2",
     live: "https://intentify-v2.vercel.app/",
     tech: {
-      "Frontend": ["React", "Vite", "Tailwind CSS", "shadcn/ui", "React Router"],
+      "Frontend": ["React", "Vite", "Tailwind CSS", "shadcn/ui"],
       "Backend": ["Node.js + Express", "TRPC"],
       "Database": ["MongoDB", "Mongoose"],
       "AI": ["LangChain", "Gemini API"],
@@ -39,7 +39,7 @@ const projects = [
     github: "https://github.com/Mudavath-Giri-Naik/Doxy.git",
     live: "https://doxy-two.vercel.app/",
     tech: {
-      "Frontend": ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Lexical"],
+      "Frontend": ["Next.js", "React", "Tailwind CSS", "Lexical"],
       "Backend": ["Supabase"],
       "Database": ["PostgreSQL"],
       "AI": ["Groq SDK"],
@@ -203,7 +203,7 @@ const ProjectsSection: React.FC = () => {
       id="projects"
       style={{
         background: "#ffffff",
-        padding: "80px 20px",
+        padding: "56px 20px",
         isolation: "isolate",
         color: "#fff",
         fontFamily: "'Inter', sans-serif",
@@ -212,15 +212,15 @@ const ProjectsSection: React.FC = () => {
       {/* ── OUTER CARD (Google-style big rounded container) ── */}
       <div
         style={{
-          maxWidth: 1300,
+          maxWidth: 1100,
           margin: "0 auto",
           backgroundImage: "url('/bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           border: "1px solid #e0e0e0",
-          borderRadius: 28,
-          padding: "60px 48px 56px",
+          borderRadius: 24,
+          padding: "40px 36px 40px",
         }}
         className="projects-outer-card"
       >
@@ -228,7 +228,7 @@ const ProjectsSection: React.FC = () => {
         <h2
           style={{
             textAlign: "center",
-            fontSize: 44,
+            fontSize: 34,
             fontWeight: 700,
             margin: 0,
             lineHeight: 1.15,
@@ -254,9 +254,9 @@ const ProjectsSection: React.FC = () => {
           style={{
             textAlign: "center",
             color: "#555",
-            fontSize: 14,
+            fontSize: 12.5,
             width: "100%",
-            margin: "14px auto 0",
+            margin: "10px auto 0",
             lineHeight: 1.6,
           }}
         >
@@ -280,7 +280,7 @@ const ProjectsSection: React.FC = () => {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`flex-shrink-0 px-4 py-2.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
+                    className={`flex-shrink-0 px-3 py-2 rounded-full text-[12px] font-medium transition-all duration-300 ${
                       isActive
                         ? "bg-[#111] text-white border border-[#111] shadow-md"
                         : "bg-white text-slate-600 border border-slate-200 shadow-sm hover:bg-slate-50"
@@ -295,9 +295,9 @@ const ProjectsSection: React.FC = () => {
           </div>
 
           {/* Desktop Filter Tabs */}
-          <div className="hidden md:flex flex-col items-center gap-3 my-8 mb-12">
+          <div className="hidden md:flex flex-col items-center gap-2.5 my-6 mb-8">
             {[categories.slice(0, 5), categories.slice(5)].map((row, rowIndex) => (
-              <div key={rowIndex} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+              <div key={rowIndex} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}>
               {row.map((cat) => {
                 const isActive = cat === activeCategory;
                 const count =
@@ -312,12 +312,12 @@ const ProjectsSection: React.FC = () => {
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
                     style={{
-                      padding: "7px 18px",
+                      padding: "5px 14px",
                       borderRadius: 999,
                       border: isActive ? "1px solid #111" : "1px solid #ccc",
                       background: isActive ? "#111" : "transparent",
                       color: isActive ? "#fff" : "#555",
-                      fontSize: 13,
+                      fontSize: 12,
                       fontWeight: 500,
                       cursor: "pointer",
                       transition: "all .2s ease",
@@ -368,8 +368,8 @@ const ProjectsSection: React.FC = () => {
           <div
             style={{
               display: "grid",
-              gap: 16,
-              marginTop: 36,
+              gap: 12,
+              marginTop: 24,
             }}
             className="projects-grid"
           >
@@ -379,7 +379,7 @@ const ProjectsSection: React.FC = () => {
                 style={{
                   background: "#ffffff",
                   border: "1px solid #e5e5e5",
-                  borderRadius: 14,
+                  borderRadius: 12,
                   overflow: "hidden",
                   transition: "opacity .35s ease, transform .35s ease",
                   display: "flex",
@@ -390,7 +390,7 @@ const ProjectsSection: React.FC = () => {
               <div
                 className="group relative"
                 style={{
-                  height: 150,
+                  height: 120,
                   position: "relative",
                   overflow: "hidden",
                   background: "#111",
@@ -423,14 +423,14 @@ const ProjectsSection: React.FC = () => {
 
                 {/* Hover Description Overlay */}
                 <div
-                  className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center"
+                  className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-center"
                   style={{ background: "rgba(255,255,255,.92)", backdropFilter: "blur(4px)" }}
                 >
                   <p
                     style={{
                       color: "#111",
-                      fontSize: 14,
-                      lineHeight: 1.6,
+                      fontSize: 12.5,
+                      lineHeight: 1.5,
                       fontWeight: 500,
                       margin: 0,
                     }}
@@ -442,8 +442,9 @@ const ProjectsSection: React.FC = () => {
 
               {/* Card Body */}
               <div
+                className="card-body"
                 style={{
-                  padding: "14px 16px 16px",
+                  padding: "10px 12px 12px",
                   display: "flex",
                   flexDirection: "column",
                   flex: 1,
@@ -455,13 +456,14 @@ const ProjectsSection: React.FC = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    gap: 8,
+                    gap: 6,
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5, minWidth: 0 }}>
                     <h3
+                      className="project-name"
                       style={{
-                        fontSize: 14,
+                        fontSize: 12.5,
                         fontWeight: 600,
                         margin: 0,
                         color: "#111",
@@ -471,8 +473,9 @@ const ProjectsSection: React.FC = () => {
                       {project.name}
                     </h3>
                     <span
+                      className="project-badge"
                       style={{
-                        fontSize: 9,
+                        fontSize: 8.5,
                         fontWeight: 500,
                         padding: "2px 6px",
                         borderRadius: 4,
@@ -486,12 +489,13 @@ const ProjectsSection: React.FC = () => {
                     </span>
                   </div>
                   <span
+                    className="project-category"
                     style={{
                       background: "#ede9fe",
                       color: "#6d28d9",
-                      fontSize: 9,
+                      fontSize: 8.5,
                       fontWeight: 500,
-                      padding: "2px 8px",
+                      padding: "2px 6px",
                       borderRadius: 999,
                       whiteSpace: "nowrap",
                       flexShrink: 0,
@@ -504,11 +508,12 @@ const ProjectsSection: React.FC = () => {
 
                 {/* Tech Pills Categorized (Table-like grid to save space) */}
                 <div
+                  className="tech-grid"
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "60px 1fr",
-                    gap: "6px 4px",
-                    marginTop: 8,
+                    gridTemplateColumns: "52px 1fr",
+                    gap: "4px 4px",
+                    marginTop: 6,
                     alignItems: "start",
                     flex: 1,
                   }}
@@ -517,24 +522,24 @@ const ProjectsSection: React.FC = () => {
                     const techs = rawTechs as string[]; // cast as string array since TS infers differently here
                     return (
                       <React.Fragment key={category}>
-                        <span style={{ fontSize: 9.5, color: "#888", fontWeight: 600, paddingTop: 3 }}>
+                        <span className="tech-category-label" style={{ fontSize: 8.5, color: "#888", fontWeight: 600, paddingTop: 2 }}>
                           {category}
                         </span>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
                           {techs.map((t, i) => {
-                            // we assign a pill color based on the category index so all pills in a category share a theme
-                            const c = pillColors[categoryIndex % pillColors.length];
                             return (
                               <span
                                 key={t}
+                                className="tech-pill"
                                 style={{
-                                  fontSize: 9,
+                                  fontSize: 8,
                                   fontFamily: "'SF Mono', 'Fira Code', monospace",
-                                  padding: "2px 6px",
+                                  padding: "1px 5px",
                                   borderRadius: 4,
-                                  background: c.bg,
-                                  color: c.text,
+                                  background: "#f3f4f6",
+                                  color: "#1f2937",
                                   fontWeight: 500,
+                                  border: "1px solid #e5e7eb",
                                 }}
                               >
                                 {t}
@@ -549,31 +554,33 @@ const ProjectsSection: React.FC = () => {
 
                 {/* Divider */}
                 <div
+                  className="card-divider"
                   style={{
                     height: 1,
                     background: "#e5e5e5",
-                    margin: "16px 0 12px",
+                    margin: "10px 0 8px",
                   }}
                 />
 
                 {/* Buttons */}
-                <div style={{ display: "flex", gap: 8 }}>
+                <div className="card-buttons" style={{ display: "flex", gap: 6 }}>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="card-btn"
                     style={{
                       flex: 1,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: 5,
+                      gap: 4,
                       background: "#f5f5f5",
                       color: "#333",
                       border: "1px solid #e0e0e0",
-                      borderRadius: 9,
-                      padding: "7px 0",
-                      fontSize: 11.5,
+                      borderRadius: 7,
+                      padding: "5px 0",
+                      fontSize: 10.5,
                       fontWeight: 500,
                       textDecoration: "none",
                       cursor: "pointer",
@@ -587,25 +594,26 @@ const ProjectsSection: React.FC = () => {
                       (e.currentTarget.style.background = "#f5f5f5")
                     }
                   >
-                    <IconBrandGithub size={13} />
+                    <IconBrandGithub size={11} />
                     GitHub
                   </a>
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="card-btn"
                     style={{
                       flex: 1,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: 5,
+                      gap: 4,
                       background: "#111",
                       color: "#fff",
                       border: "none",
-                      borderRadius: 9,
-                      padding: "7px 0",
-                      fontSize: 11.5,
+                      borderRadius: 7,
+                      padding: "5px 0",
+                      fontSize: 10.5,
                       fontWeight: 500,
                       textDecoration: "none",
                       cursor: "pointer",
@@ -619,7 +627,7 @@ const ProjectsSection: React.FC = () => {
                       (e.currentTarget.style.background = "#111")
                     }
                   >
-                    <IconWorld size={13} />
+                    <IconWorld size={11} />
                     View Live
                   </a>
                 </div>
@@ -636,7 +644,7 @@ const ProjectsSection: React.FC = () => {
           grid-template-columns: repeat(4, 1fr);
         }
         .projects-outer-card {
-          padding: 60px 48px 56px;
+          padding: 40px 36px 40px;
         }
         @media (max-width: 1100px) {
           .projects-grid {
@@ -648,17 +656,70 @@ const ProjectsSection: React.FC = () => {
             grid-template-columns: repeat(2, 1fr) !important;
           }
           .projects-outer-card {
-            padding: 40px 24px 36px !important;
-            border-radius: 20px !important;
+            padding: 32px 20px 28px !important;
+            border-radius: 18px !important;
           }
         }
         @media (max-width: 600px) {
           .projects-grid {
             grid-template-columns: 1fr !important;
+            gap: 14px !important;
+            margin-top: 16px !important;
           }
           .projects-outer-card {
-            padding: 32px 16px 28px !important;
-            border-radius: 16px !important;
+            padding: 24px 14px 22px !important;
+            border-radius: 14px !important;
+          }
+          /* Mobile card improvements */
+          .projects-grid > div {
+            border-radius: 14px !important;
+          }
+          /* Taller preview on mobile for better visibility */
+          .projects-grid .group {
+            height: 160px !important;
+          }
+          /* Larger card body padding */
+          .projects-grid .card-body {
+            padding: 14px 16px 16px !important;
+          }
+          /* Larger project name */
+          .projects-grid .project-name {
+            font-size: 15px !important;
+          }
+          /* Larger badge text */
+          .projects-grid .project-badge,
+          .projects-grid .project-category {
+            font-size: 10px !important;
+            padding: 3px 8px !important;
+          }
+          /* Larger tech category labels */
+          .projects-grid .tech-category-label {
+            font-size: 10px !important;
+          }
+          /* Larger tech pills */
+          .projects-grid .tech-pill {
+            font-size: 10px !important;
+            padding: 3px 7px !important;
+          }
+          /* Wider tech grid label column */
+          .projects-grid .tech-grid {
+            grid-template-columns: 58px 1fr !important;
+            gap: 5px 6px !important;
+            margin-top: 10px !important;
+          }
+          /* Better divider spacing */
+          .projects-grid .card-divider {
+            margin: 14px 0 10px !important;
+          }
+          /* Larger buttons */
+          .projects-grid .card-btn {
+            padding: 8px 0 !important;
+            font-size: 12.5px !important;
+            border-radius: 9px !important;
+            gap: 5px !important;
+          }
+          .projects-grid .card-buttons {
+            gap: 8px !important;
           }
         }
         @keyframes pulse-dot {
