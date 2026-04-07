@@ -3,7 +3,6 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { Highlighter } from "@/components/ui/highlighter";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import SocialIcon from "./SocialIcon";
-import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const socialIcons = [
@@ -242,11 +241,6 @@ const HeroSection = () => {
         </Dock>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="relative z-30 flex flex-col items-center gap-2 mt-8 animate-pulse-soft">
-        <ChevronDown className="w-5 h-5 text-muted-foreground" />
-        <span className="text-sm text-muted-foreground">to explore</span>
-      </div>
     </section>
   );
 };
